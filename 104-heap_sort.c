@@ -12,9 +12,9 @@
  */
 void swap(int *a, int *b)
 {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
@@ -26,19 +26,19 @@ void swap(int *a, int *b)
  */
 void heapify(int *array, size_t size, size_t index, size_t nth)
 {
-    size_t largest = index, left = getLeft(index), right = getRight(index);
+	size_t largest = index, left = getLeft(index), right = getRight(index);
 
-    if (left <= nth && array[left] > array[largest])
-        largest = left;
-    if (right <= nth && array[right] > array[largest])
-        largest = right;
+	if (left <= nth && array[left] > array[largest])
+		largest = left;
+	if (right <= nth && array[right] > array[largest])
+		largest = right;
 
-    if (largest != index)
-    {
-        swap(&array[index], &array[largest]);
-        print_array(array, size);
-        heapify(array, size, largest, nth);
-    }
+	if (largest != index)
+	{
+		swap(&array[index], &array[largest]);
+		print_array(array, size);
+		heapify(array, size, largest, nth);
+	}
 }
 
 /**
@@ -48,18 +48,18 @@ void heapify(int *array, size_t size, size_t index, size_t nth)
  */
 void heap_sort(int *array, size_t size)
 {
-    size_t i;
+	size_t i;
 
-    if (array == NULL || size < 2)
-        return;
+	if (array == NULL || size < 2)
+		return;
 
-    for (i = size / 2 - 1; i < size; i--)
-        heapify(array, size, i, size - 1);
+	for (i = size / 2 - 1; i < size; i--)
+		heapify(array, size, i, size - 1);
 
-    for (i = size - 1; i > 0; i--)
-    {
-        swap(&array[0], &array[i]);
-        print_array(array, size);
-        heapify(array, size, 0, i - 1);
-    }
+	for (i = size - 1; i > 0; i--)
+	{
+		swap(&array[0], &array[i]);
+		print_array(array, size);
+		heapify(array, size, 0, i - 1);
+	}
 }

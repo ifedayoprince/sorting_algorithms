@@ -8,9 +8,9 @@
  */
 void swap(int *a, int *b)
 {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 /**
@@ -24,25 +24,25 @@ void swap(int *a, int *b)
  */
 int partition_hoare(int *array, int low, int high, size_t size)
 {
-    int pivot = array[high];
-    int i = low - 1, j = high + 1;
+	int pivot = array[high];
+	int i = low - 1, j = high + 1;
 
-    while (1)
-    {
-        do {
-            i++;
-        } while (array[i] < pivot);
+	while (1)
+	{
+		do {
+			i++;
+		} while (array[i] < pivot);
 
-        do {
-            j--;
-        } while (array[j] > pivot);
+		do {
+			j--;
+		} while (array[j] > pivot);
 
-        if (i >= j)
-            return (j);
+		if (i >= j)
+			return (j);
 
-        swap(&array[i], &array[j]);
-        print_array(array, size);
-    }
+		swap(&array[i], &array[j]);
+		print_array(array, size);
+	}
 }
 
 /**
@@ -54,10 +54,13 @@ int partition_hoare(int *array, int low, int high, size_t size)
  */
 void quick_sort_hoare(int *array, int low, int high, size_t size)
 {
-    if (low < high)
-    {
-        int p = partition_hoare(array, low, high, size);
-        quick_sort_hoare(array, low, p, size);
-        quick_sort_hoare(array, p + 1, high, size);
-    }
+	int p;
+
+	if (low < high)
+	{
+		p = partition_hoare(array, low, high, size);
+
+		quick_sort_hoare(array, low, p, size);
+		quick_sort_hoare(array, p + 1, high, size);
+	}
 }
