@@ -39,20 +39,30 @@ int part(int *arr, int start, int end, size_t len)
 }
 
 /**
- * quick_sort - sorts an array of integers recursively
+ * qs - sorts an array of integers recursively
  * @array: array to sort
  * @first: first position
  * @last: last position
  * @size: array size
  */
-void quick_sort(int *array, int first, int last, size_t size)
+void qs(int *array, int first, int last, size_t size)
 {
 	int pivot;
 
 	if (first < last)
 	{
 		pivot = part(array, first, last, size);
-		quick_sort(array, first, pivot - 1, size);
-		quick_sort(array, pivot + 1, last, size);
+		qs(array, first, pivot - 1, size);
+		qs(array, pivot + 1, last, size);
 	}
+}
+
+/**
+ * quick_sort - sorts an array of integers recursively
+ * @array: array to sort
+ * @size: array size
+ */
+void quick_sort(int *array, size_t size)
+{
+	qs(array, 0, size - 1, size);
 }
